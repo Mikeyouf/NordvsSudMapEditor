@@ -6,7 +6,7 @@ import * as ROUTES from '../constants/routes';
 import Layout from '../components/Layout'
 
 const SignUpPage = () => (
-  <Layout>
+  <Layout page="connexion">
     <h1>S'enregistrer</h1>
     <SignUpForm />
   </Layout>

@@ -3,15 +3,46 @@ import Navigation from './Navigation'
 import GlobalStyle from '../theme/GlobalStyle'
 import { useWindowSize } from '../hooks/useResize'
 
+import styled from 'styled-components'
+import { colors, pxToRem } from '../theme/Helpers'
+
+const Page = styled.section`
+    display: flex;
+`
+
+const Aside = styled.aside`
+    background: ${colors.lightGrey};
+    padding: ${pxToRem(8)};
+`
+
+const Nav = styled.nav`
+    display: flex;
+    width: ${pxToRem(160)};
+    height: 100%;
+    min-height: calc(100vh - 16px);
+`
+
+const Section = styled.section`
+    width: 100%;
+    height: 100%;
+    /* min-height: 100vh; */
+    padding: ${pxToRem(16)};
+`
+
 const TemplateWrapper = ({ children, page }) => {
   let size = useWindowSize();
+//   const [ pageActive, setPageActive ] = useState('accueil')
 
   return (
-    <div>
+    <Page>
         <GlobalStyle/>
-        <Navigation pageActive={page} size={size} />
-        <div>{children}</div>
-    </div>
+        <Aside>
+            <Nav>
+                <Navigation pageActive={page} size={size} />
+            </Nav>
+        </Aside>
+        <Section>{children}</Section>
+    </Page>
   )
 }
 

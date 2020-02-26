@@ -8,7 +8,7 @@ import { PasswordForgetLink } from './PasswordForgetPage';
 import Layout from '../components/Layout'
 
 const SignInPage = () => (
-  <Layout>
+  <Layout page="connexion">
     <h1>Se connecter</h1>
     <SignInForm />
     <PasswordForgetLink />

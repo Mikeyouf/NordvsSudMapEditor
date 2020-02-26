@@ -26,12 +26,12 @@ const Global = createGlobalStyle`
         font-weight: 700;
     }
 
-    .accent {
+    /* .accent {
         color: ${colors.accent}
-    }
+    } */
 
     a {
-        color: ${colors.accentDark};
+        /* color: ${colors.white}; */
         text-decoration: none;
         list-style: none;
         outline: none;

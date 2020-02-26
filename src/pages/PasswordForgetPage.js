@@ -5,7 +5,7 @@ import * as ROUTES from '../constants/routes';
 import Layout from '../components/Layout'
 
 const PasswordForgetPage = () => (
-  <Layout>
+  <Layout page="connexion">
     <h1>Mot de passe oublié</h1>
     <PasswordForgetForm />
   </Layout>
