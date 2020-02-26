@@ -3,7 +3,6 @@ import '../styles/App.css'
 
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-import Navigation from './../components/Navigation';
 import LandingPage from './LandingPage';
 import SignUpPage from './SignUpPage';
 import SignInPage from './SignInPage';
@@ -17,10 +16,6 @@ import { withAuthentication } from '../components/session/index';
 
 const App = () => (
   <Router>
-    <div>
-    {/* {console.log(process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT)} */}
-      <Navigation />
-      <hr />
       <Route exact path={ROUTES.LANDING} component={LandingPage} />
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
       <Route path={ROUTES.SIGN_IN} component={SignInPage} />
@@ -28,7 +23,6 @@ const App = () => (
       <Route path={ROUTES.HOME} component={HomePage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
-    </div>
   </Router>
 );
 export default withAuthentication(App);

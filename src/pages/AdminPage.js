@@ -5,16 +5,17 @@ import * as ROUTES from '../constants/routes';
 import { withAuthorization, withEmailVerification } from '../components/session/index';
 import { withFirebase } from '../../src/firebase/index';
 import { Switch, Route, Link } from 'react-router-dom';
+import Layout from '../components/Layout'
 
 const AdminPage = ({ ...props }) => (
-  <div>
+  <Layout>
     <h1>Admin</h1>
     <p>Cette page est accessible uniquement pour les utilisateurs avec un rôle d'admin.</p>
     <Switch>
       <Route exact path={ROUTES.ADMIN_DETAILS} component={UserItem} {...props}/>
       <Route exact path={ROUTES.ADMIN} component={UserList} {...props}/>
     </Switch>
-  </div>
+  </Layout>
 );
 
 const UserListBase = ({ firebase, ...props }) => {

@@ -1,12 +1,13 @@
 import React from 'react';
 import { withAuthorization, withEmailVerification  } from '../components/session/index';
 import { compose } from 'recompose';
+import Layout from '../components/Layout'
 
 const HomePage = () => (
-  <div>
+  <Layout>
     <h1>Page d'accueil</h1>
     <p>Cette page est accessible pour chaque utilisateur connecté</p>
-  </div>
+  </Layout>
 );
 
 const condition = authUser => !!authUser;

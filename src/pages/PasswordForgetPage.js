@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { withFirebase } from '../firebase/index';
 import * as ROUTES from '../constants/routes';
+import Layout from '../components/Layout'
 
 const PasswordForgetPage = () => (
-  <div>
+  <Layout>
     <h1>Mot de passe oublié</h1>
     <PasswordForgetForm />
-  </div>
+  </Layout>
 );
 
 const INITIAL_STATE = {

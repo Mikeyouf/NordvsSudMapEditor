@@ -5,14 +5,15 @@ import { SignUpLink } from './SignUpPage';
 import { withFirebase } from '../firebase/index';
 import * as ROUTES from '../constants/routes';
 import { PasswordForgetLink } from './PasswordForgetPage';
+import Layout from '../components/Layout'
 
 const SignInPage = () => (
-  <div>
+  <Layout>
     <h1>Se connecter</h1>
     <SignInForm />
     <PasswordForgetLink />
     <SignUpLink />
-  </div>
+  </Layout>
 );
 
 const INITIAL_STATE = {

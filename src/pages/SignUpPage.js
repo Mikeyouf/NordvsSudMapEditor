@@ -3,12 +3,13 @@ import { Link, withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import { withFirebase } from '../firebase/index';
 import * as ROUTES from '../constants/routes';
+import Layout from '../components/Layout'
 
 const SignUpPage = () => (
-  <div>
+  <Layout>
     <h1>S'enregistrer</h1>
     <SignUpForm />
-  </div>
+  </Layout>
 )
 
 const INITIAL_STATE = {
