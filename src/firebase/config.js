@@ -1,11 +1,12 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyA4FOzDDZnT7jOTZJjORCD88vOU872CMQE",
-    authDomain: "ma-chatbox-f3c4f.firebaseapp.com",
-    databaseURL: "https://ma-chatbox-f3c4f.firebaseio.com",
-    projectId: "ma-chatbox-f3c4f",
-    storageBucket: "ma-chatbox-f3c4f.appspot.com",
-    messagingSenderId: "122832126559",
-    appId: "1:122832126559:web:c6d1550fd071cac4b011ea"
-  }
+  apiKey: "AIzaSyDbGwpLB767mk08nTLyNzQ62lVuUU8kXcw",
+  authDomain: "nord-vs-sud-map-editor.firebaseapp.com",
+  databaseURL: "https://nord-vs-sud-map-editor.firebaseio.com",
+  projectId: "nord-vs-sud-map-editor",
+  storageBucket: "nord-vs-sud-map-editor.appspot.com",
+  messagingSenderId: "1027324479562",
+  appId: "1:1027324479562:web:70af693e28f84dd786feb3"
+
+}
 
   export default firebaseConfig
