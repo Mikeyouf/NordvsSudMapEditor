@@ -4,7 +4,7 @@ import { compose } from 'recompose';
 import Layout from '../components/Layout'
 
 const HomePage = () => (
-  <Layout>
+  <Layout page="carte">
     <h1>Page d'accueil</h1>
     <p>Cette page est accessible pour chaque utilisateur connecté</p>
   </Layout>

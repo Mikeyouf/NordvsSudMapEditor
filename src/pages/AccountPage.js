@@ -8,7 +8,7 @@ import Layout from '../components/Layout'
 const AccountPage = () => (
   <AuthUserContext.Consumer>
     {authUser => (
-      <Layout>
+      <Layout page="profil">
         <h1>Profil: {authUser.displayName}</h1>
         <PasswordForgetForm />
         <PasswordChangeForm />

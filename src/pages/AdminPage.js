@@ -8,7 +8,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 import Layout from '../components/Layout'
 
 const AdminPage = ({ ...props }) => (
-  <Layout>
+  <Layout page="admin">
     <h1>Admin</h1>
     <p>Cette page est accessible uniquement pour les utilisateurs avec un rôle d'admin.</p>
     <Switch>

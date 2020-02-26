@@ -28,7 +28,7 @@ class Firebase {
     doSendEmailVerification = () =>
     // console.log(process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT)
       this.auth.currentUser.sendEmailVerification({
-        url: 'https://nord-vs-sud-map-editor.netlify.com',
+        url: 'https://nord-vs-sud-map-editor.netlify.com/accueil',
     });
 
     // *** Merge Auth and DB User API *** //
