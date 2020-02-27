@@ -12,7 +12,9 @@ const SignOutButton = ({ firebase }) => (
       <IconContext.Provider value={{ className: "icone" }}>
         <TiPowerOutline/>
       </IconContext.Provider>
-      déconnexion
+      <span>
+        déconnfexion
+      </span>
     </button>
   </Link>
 );

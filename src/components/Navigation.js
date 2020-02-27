@@ -28,6 +28,9 @@ const LiElt = styled.li`
     .icone {
       color: ${colors.white};
       margin-right: ${pxToRem(8)};
+      /* border: ${({ open }) => open ? 'none' : `1px solid ${colors.white}`}; */
+      /* padding: ${({ open }) => open ? '0' : `${pxToRem(4)}`}; */
+      /* font-size: ${({ open }) => open ? `${pxToRem(20)}` : `${pxToRem(24)}`} */
     }
 
     &.active {
@@ -40,6 +43,8 @@ const LiElt = styled.li`
 
     span {
       display: ${({ open }) => open ? 'block' : 'none'};
+      opacity: ${({ open }) => open ? '1' : '0'};
+      transition: all 0.2s ease-in;
     }
 
   }
@@ -49,23 +54,24 @@ const LiElt = styled.li`
 
 const ButtonWrapper = styled.div`
   margin: 0 auto;
+  width: ${pxToRem(160)};
 
   button {
-      border: 1px solid ${colors.white};
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all 0.3s ease-in;
-      justify-self: flex-end;
-      font-size: ${pxToRem(16)};
-      color: ${colors.white};
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      padding: ${pxToRem(6)} ${pxToRem(8)};
+    margin: 0 auto;
+    border: 1px solid ${colors.white};
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+    justify-self: flex-end;
+    font-size: ${pxToRem(15)};
+    color: ${colors.white};
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    padding: ${pxToRem(6)};
 
       .icone {
         color: ${colors.white};
-        /* font-size: ${pxToRem(18)}; */
         transition: all 0.3s ease-in;
       }
 
@@ -79,6 +85,10 @@ const ButtonWrapper = styled.div`
       &:hover .icone {
         color: ${colors.accentDark};
         transition: all 0.3s ease-in;
+      }
+
+      span {
+        display: ${({ open }) => open ? 'block' : 'none'};
       }
     }
 `
@@ -144,8 +154,8 @@ const NavigationAuth = ({ authUser, setPageActive, pageActive, open }) => (
           </LiElt>
         )}
       </ul>
-      <ButtonWrapper>
-        <SignOutButton />
+      <ButtonWrapper open={open}>
+        <SignOutButton/>
       </ButtonWrapper>
     </>
 );
