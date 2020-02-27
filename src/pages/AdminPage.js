@@ -44,17 +44,17 @@ const UserListBase = ({ firebase, ...props }) => {
 
   return (
     <div>
-      <h2>Users</h2>
+      <h2>Utilisateurs</h2>
       {loading && <div>Loading ...</div>}
       <ul>
         {users.map(user => (
           <li key={user.uid}>
             <span>
-              <strong>Username:</strong> {user.username}
+              <strong>Nom:</strong> {user.username}
             </span>
             <span>
               <Link to={`${ROUTES.ADMIN}/${user.uid}`}>
-                Details
+                Détails
               </Link>
             </span>
           </li>
@@ -118,7 +118,7 @@ const UserItemBase = ({ firebase, ...props }) => {
 
   return (
     <div>
-      <h2>User ({authUser || props.match.params.id})</h2>
+      <h2>Utilisateurs ({authUser || props.match.params.id})</h2>
       {loading && <div>Loading ...</div>}
       {user && (
         <div>
@@ -129,7 +129,7 @@ const UserItemBase = ({ firebase, ...props }) => {
             <strong>E-Mail:</strong> {user.email}
           </p>
           <p>
-            <strong>Username:</strong> {user.username}
+            <strong>Nom:</strong> {user.username}
           </p>
           <div>
             <strong>Rôle(s):</strong> {Object.keys(user.roles).map((role,i) => (<p key={i}>{user.roles[role]}</p>))}

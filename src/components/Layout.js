@@ -11,7 +11,7 @@ const Page = styled.section`
 `
 
 const Aside = styled.aside`
-    background: ${colors.lightGrey};
+    background: ${colors.accentLight};
     padding: ${pxToRem(8)};
 `
 
@@ -20,18 +20,16 @@ const Nav = styled.nav`
     width: ${pxToRem(160)};
     height: 100%;
     min-height: calc(100vh - 16px);
+    padding-left: ${pxToRem(16)};
 `
 
 const Section = styled.section`
     width: 100%;
     height: 100%;
-    /* min-height: 100vh; */
-    padding: ${pxToRem(16)};
 `
 
 const TemplateWrapper = ({ children, page }) => {
   let size = useWindowSize();
-//   const [ pageActive, setPageActive ] = useState('accueil')
 
   return (
     <Page>

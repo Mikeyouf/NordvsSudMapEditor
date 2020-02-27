@@ -2,18 +2,21 @@ import { css } from 'styled-components'
 import { darken, lighten } from 'polished'
 
 export const colors = {
-  primary: '#548496',
-  primaryLight: lighten(0.2, '#548496'),
-  primaryDark: darken(0.05, '#548496'),
+  primary: '#797335',
+  primaryLight: lighten(0.2, '#797335'),
+  primaryDark: darken(0.05, '#797335'),
   primaryTransparent: 'rgba(84, 132, 150, 0.5)',
-  accent: '#CBE54E',
-  accentLight: lighten(0.1, '#CBE54E'),
-  accentDark: darken(0.2, '#CBE54E'),
+  accent: '#3855E9',
+  accentLight: lighten(0.1, '#3855E9'),
+  accentDark: darken(0.2, '#3855E9'),
   white: '#f1f4f5',
   black: '#20272b',
   grey: '#354147',
   lightGrey: '#969ea2',
   darkWhite: darken(0.05, '#f1f4f5'),
+  red: '#E93855',
+  lightRed: lighten(0.1, '#E93855'),
+  darkRed: darken(0.2, '#E93855'),
 }
 
 export const pxToRem = (px = 16) => {

@@ -5,12 +5,15 @@ import 'sanitize.css'
 import 'sanitize.css/forms.css'
 import 'sanitize.css/typography.css'
 import * as serviceWorker from './serviceWorker'
+import TueriProvider from '@tueri/react'
 
 import firebase, { firebaseContext } from './firebase/index'
 
 ReactDOM.render(
     <firebaseContext.Provider value={firebase}>
-        <App />
+        <TueriProvider>
+            <App />
+        </TueriProvider>
     </firebaseContext.Provider>
 , document.getElementById('root'))
 

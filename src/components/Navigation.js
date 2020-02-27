@@ -8,16 +8,24 @@ import * as ROLES from '../constants/roles';
 import { AuthUserContext } from './session/index';
 
 import styled from 'styled-components'
-import { colors } from '../theme/Helpers'
+import { colors, pxToRem, fonts } from '../theme/Helpers'
 
 const LiElt = styled.li`
+  margin: ${pxToRem(8)} 0;
+  font-family: ${fonts.fontTexte};
+  font-size: ${pxToRem(20)};
+
   a {
     color: ${colors.white};
 
+    button {
+      border: 1px solid ${colors.white};
+      border-radius: 4px;
+    }
   }
 
   &.active > a {
-    color: ${colors.black};
+    color: ${colors.accentDark};
   }
 
 `
