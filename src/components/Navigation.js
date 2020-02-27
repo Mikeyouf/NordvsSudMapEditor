@@ -14,30 +14,36 @@ import styled from 'styled-components'
 import { colors, pxToRem, fonts } from '../theme/Helpers'
 
 const LiElt = styled.li`
-  margin: ${pxToRem(8)} 0;
+  margin: ${pxToRem(16)} 0;
   padding-left: ${pxToRem(16)};
   font-family: ${fonts.fontTexte};
   font-size: ${pxToRem(20)};
   height: ${pxToRem(24)};
-  display: flex;
-  align-items: center;
-
-  .icone {
-    color: ${colors.white};
-  }
 
   a {
     color: ${colors.white};
-    margin-left: ${pxToRem(8)};
+    display: flex;
+    align-items: center;
+
+    .icone {
+      color: ${colors.white};
+      margin-right: ${pxToRem(8)};
+    }
+
+    &.active {
+      color: ${colors.accentDark};
+    }
+
+    &.active > .icone {
+      color: ${colors.accentDark};
+    }
+
+    span {
+      display: ${({ open }) => open ? 'block' : 'none'};
+    }
+
   }
 
-  &.active > a {
-    color: ${colors.accentDark};
-  }
-
-  &.active > .icone {
-    color: ${colors.accentDark};
-  }
 
 `
 
@@ -59,7 +65,7 @@ const ButtonWrapper = styled.div`
 
       .icone {
         color: ${colors.white};
-        font-size: ${pxToRem(18)};
+        /* font-size: ${pxToRem(18)}; */
         transition: all 0.3s ease-in;
       }
 
@@ -78,47 +84,63 @@ const ButtonWrapper = styled.div`
 `
 
 
-const Navigation = ({ setPageActive, pageActive }) => {
+const Navigation = ({ setPageActive, pageActive, open }) => {
   return (
     <AuthUserContext.Consumer>
     {authUser =>
       authUser ? (
-        <NavigationAuth authUser={authUser} setPageActive={setPageActive} pageActive={pageActive} />
+        <NavigationAuth authUser={authUser} setPageActive={setPageActive} pageActive={pageActive} open={open} />
       ) : (
-        <NavigationNonAuth setPageActive={setPageActive} pageActive={pageActive} />
+        <NavigationNonAuth setPageActive={setPageActive} pageActive={pageActive} open={open}/>
       )
     }
     </AuthUserContext.Consumer>
   )
 };
 
-const NavigationAuth = ({ authUser, setPageActive, pageActive }) => (
+const NavigationAuth = ({ authUser, setPageActive, pageActive, open }) => (
     <>
       <ul>
-        <LiElt className={pageActive === 'accueil' ? 'active' : ''}>
-          <IconContext.Provider value={{ className: "icone" }}>
-            <TiHomeOutline/>
-          </IconContext.Provider>
-          <Link to={ROUTES.LANDING}>Accueil</Link>
+        <LiElt className={pageActive === 'accueil' ? 'active' : ''} open={open}>
+          <Link to={ROUTES.LANDING}>
+            <IconContext.Provider value={{ className: "icone" }}>
+              <TiHomeOutline/>
+            </IconContext.Provider>
+            <span>
+              Accueil
+            </span>
+          </Link>
         </LiElt>
-        <LiElt className={pageActive === 'carte' ? 'active' : ''}>
-        <IconContext.Provider value={{ className: "icone" }}>
-            <TiMap/>
-          </IconContext.Provider>
-          <Link to={ROUTES.HOME}>Carte</Link>
+        <LiElt className={pageActive === 'carte' ? 'active' : ''} open={open}>
+          <Link to={ROUTES.HOME}>
+            <IconContext.Provider value={{ className: "icone" }}>
+              <TiMap/>
+            </IconContext.Provider>
+            <span>
+              Carte
+            </span>
+          </Link>
         </LiElt>
-        <LiElt className={pageActive === 'profil' ? 'active' : ''}>
-          <IconContext.Provider value={{ className: "icone" }}>
-            <TiUserOutline/>
-          </IconContext.Provider>
-          <Link to={ROUTES.ACCOUNT}>Profil</Link>
+        <LiElt className={pageActive === 'profil' ? 'active' : ''} open={open}>
+          <Link to={ROUTES.ACCOUNT}>
+            <IconContext.Provider value={{ className: "icone" }}>
+              <TiUserOutline/>
+            </IconContext.Provider>
+            <span>
+              Profil
+            </span>
+          </Link>
         </LiElt>
         {!!authUser.roles[ROLES.ADMIN] && (
-          <LiElt className={pageActive === 'admin' ? 'active' : ''}>
-            <IconContext.Provider value={{ className: "icone" }}>
-              <TiEdit/>
-            </IconContext.Provider>
-            <Link to={ROUTES.ADMIN}>Admin</Link>
+          <LiElt className={pageActive === 'admin' ? 'active' : ''} open={open}>
+            <Link to={ROUTES.ADMIN}>
+              <IconContext.Provider value={{ className: "icone" }}>
+                <TiEdit/>
+              </IconContext.Provider>
+              <span>
+                Admin
+              </span>
+            </Link>
           </LiElt>
         )}
       </ul>
@@ -128,19 +150,27 @@ const NavigationAuth = ({ authUser, setPageActive, pageActive }) => (
     </>
 );
 
-const NavigationNonAuth = ({ setPageActive, pageActive }) => (
+const NavigationNonAuth = ({ setPageActive, pageActive, open }) => (
     <ul>
-      <LiElt className={pageActive === 'accueil' ? 'active' : ''} name='accueil'>
-        <IconContext.Provider value={{ className: `icone` }}>
-          <TiHomeOutline/>
-        </IconContext.Provider>
-        <Link to={ROUTES.LANDING}>Accueil</Link>
+      <LiElt className={pageActive === 'accueil' ? 'active' : ''} name='accueil' open={open}>
+        <Link to={ROUTES.LANDING}>
+          <IconContext.Provider value={{ className: `icone` }}>
+            <TiHomeOutline/>
+          </IconContext.Provider>
+          <span>
+            Accueil
+          </span>
+        </Link>
       </LiElt>
-      <LiElt className={pageActive === 'connexion' ? 'active' : ''} name='connexion'>
-      <IconContext.Provider value={{ className: "icone" }}>
-          <TiLockOpenOutline/>
-        </IconContext.Provider>
-        <Link to={ROUTES.SIGN_IN}>Connexion</Link>
+      <LiElt className={pageActive === 'connexion' ? 'active' : ''} name='connexion' open={open}>
+        <Link to={ROUTES.SIGN_IN}>
+          <IconContext.Provider value={{ className: "icone" }}>
+            <TiLockOpenOutline/>
+          </IconContext.Provider>
+          <span>
+            Connexion
+          </span>
+        </Link>
       </LiElt>
     </ul>
 );
