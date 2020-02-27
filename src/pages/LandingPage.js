@@ -26,21 +26,25 @@ const Header = styled.header`
     }
 `
 
-const Article = styled.article`
-    max-height: 100vh;
-    overflow: hidden;
+const ImgWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: -20;
 `
 
 const LandingPage = () => {
     return ( 
         <Layout page="accueil">
+            <ImgWrapper>
+                <Img src='https://userscontent2.emaze.com/images/2d48516c-35f5-4d13-a458-9dd4cb476a2b/e9fe166b0ecffa8db62f75230ddc8d91.jpg' alt="background bataille"/>
+            </ImgWrapper>
             <Wrapper>
                 <Header>
                     <h2>Nord vs Sud Map Editor</h2>
                 </Header>
-                <Article>
-                    <Img src='https://userscontent2.emaze.com/images/2d48516c-35f5-4d13-a458-9dd4cb476a2b/e9fe166b0ecffa8db62f75230ddc8d91.jpg' alt="background bataille"/>
-                </Article>
             </Wrapper>
         </Layout>
      );

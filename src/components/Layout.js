@@ -11,16 +11,18 @@ const Page = styled.section`
 `
 
 const Aside = styled.aside`
-    background: ${colors.accentLight};
+    background: ${colors.accent};
     padding: ${pxToRem(8)};
+    box-shadow: 0 5px 4px 5px rgba(0, 0, 0, 0.3);
 `
 
 const Nav = styled.nav`
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: ${pxToRem(160)};
     height: 100%;
     min-height: calc(100vh - 16px);
-    padding-left: ${pxToRem(16)};
 `
 
 const Section = styled.section`

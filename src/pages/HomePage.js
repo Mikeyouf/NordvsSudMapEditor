@@ -5,8 +5,10 @@ import Layout from '../components/Layout'
 
 const HomePage = () => (
   <Layout page="carte">
-    <h1>Page d'accueil</h1>
-    <p>Cette page est accessible pour chaque utilisateur connecté</p>
+    <h1>Carte</h1>
+    <article>
+
+    </article>
   </Layout>
 );
 
