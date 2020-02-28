@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { pxToRem, colors, fonts } from '../theme/Helpers'
 
 // import imageAccueil from '../img/image-accueil.jpg'
+
 const Wrapper = styled.div`
     position: relative;
 `
@@ -38,6 +39,7 @@ const ImgWrapper = styled.div`
 const LandingPage = () => {
     return ( 
         <Layout page="accueil">
+            {/* {console.log(<Img src='https://userscontent2.emaze.com/images/2d48516c-35f5-4d13-a458-9dd4cb476a2b/e9fe166b0ecffa8db62f75230ddc8d91.jpg' alt="background bataille"/>)} */}
             <ImgWrapper>
                 <Img src='https://userscontent2.emaze.com/images/2d48516c-35f5-4d13-a458-9dd4cb476a2b/e9fe166b0ecffa8db62f75230ddc8d91.jpg' alt="background bataille"/>
             </ImgWrapper>

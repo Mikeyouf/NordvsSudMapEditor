@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState , useEffect } from 'react'
 import Navigation from './Navigation'
 import GlobalStyle from '../theme/GlobalStyle'
 import { useWindowSize } from '../hooks/useResize'
@@ -56,8 +56,17 @@ const Section = styled.section`
 `
 
 const TemplateWrapper = ({ children, page }) => {
-  let size = useWindowSize();
-  const [ open, setOpen ] = useState(true)
+    let size = useWindowSize();
+    const [ open, setOpen ] = useState(true)
+
+    const handleLocalStorage = () => {
+        setOpen(!open)
+        localStorage.setItem('open', JSON.stringify(!open));
+    }
+
+    useEffect(() => {
+        setOpen(JSON.parse(localStorage.getItem('open')),)
+    }, [open])
 
   return (
     <Page>
@@ -67,9 +76,9 @@ const TemplateWrapper = ({ children, page }) => {
                 <IconContext.Provider value={{ className: "icone" }}>
                     {
                         open ?
-                        <TiChevronLeftOutline onClick={() => setOpen(!open)} />
+                        <TiChevronLeftOutline onClick={() => handleLocalStorage()} />
                         :
-                        <TiChevronRightOutline onClick={() => setOpen(!open)} />
+                        <TiChevronRightOutline onClick={() => handleLocalStorage()} />
                     }
                 </IconContext.Provider>
             </div>

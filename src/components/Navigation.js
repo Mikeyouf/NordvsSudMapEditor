@@ -28,9 +28,6 @@ const LiElt = styled.li`
     .icone {
       color: ${colors.white};
       margin-right: ${pxToRem(8)};
-      /* border: ${({ open }) => open ? 'none' : `1px solid ${colors.white}`}; */
-      /* padding: ${({ open }) => open ? '0' : `${pxToRem(4)}`}; */
-      /* font-size: ${({ open }) => open ? `${pxToRem(20)}` : `${pxToRem(24)}`} */
     }
 
     &.active {
