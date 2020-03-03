@@ -7,14 +7,68 @@ import { withFirebase } from '../../src/firebase/index';
 import { Switch, Route, Link } from 'react-router-dom';
 import Layout from '../components/Layout'
 
+import styled from 'styled-components'
+import { pxToRem, colors, fonts } from '../theme/Helpers'
+
+const Wrapper = styled.article`
+  padding: ${pxToRem(16)};
+
+  h1 {
+    color: ${colors.accent};
+  }
+`
+
+const Users = styled.article`
+  width: ${pxToRem(600)};
+  border: 1px solid ${colors.accent};
+  border-radius: 4px;
+  padding: ${pxToRem(16)} ${pxToRem(8)};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    color: ${colors.accentLight};
+    margin: 0 auto;
+  }
+`
+
+const Liste = styled.ul`
+  width: 100%;
+  list-style: none;
+  padding: 0;
+
+  li {
+    font-family: ${fonts.fontTexte};
+    display: flex;
+    justify-content: space-between;
+
+    p {
+
+      &:nth-child(1) {
+        font-weight: bold;
+      }
+
+      a {
+        color: ${colors.accentDark};
+      }
+    }
+
+    &:nth-child(odd) {
+      background: ${colors.accentRGBA};
+    }
+  }
+`
+
 const AdminPage = ({ ...props }) => (
   <Layout page="admin">
-    <h1>Admin</h1>
-    <p>Cette page est accessible uniquement pour les utilisateurs avec un rôle d'admin.</p>
-    <Switch>
-      <Route exact path={ROUTES.ADMIN_DETAILS} component={UserItem} {...props}/>
-      <Route exact path={ROUTES.ADMIN} component={UserList} {...props}/>
-    </Switch>
+    <Wrapper>
+      <h1>Admin panel</h1>
+      <Switch>
+        <Route exact path={ROUTES.ADMIN_DETAILS} component={UserItem} {...props}/>
+        <Route exact path={ROUTES.ADMIN} component={UserList} {...props}/>
+      </Switch>
+    </Wrapper>
   </Layout>
 );
 
@@ -43,24 +97,27 @@ const UserListBase = ({ firebase, ...props }) => {
   }, [firebase.db])
 
   return (
-    <div>
+    <Users>
       <h2>Utilisateurs</h2>
       {loading && <div>Loading ...</div>}
-      <ul>
+      <Liste>
         {users.map(user => (
           <li key={user.uid}>
-            <span>
-              <strong>Nom:</strong> {user.username}
-            </span>
-            <span>
+            <p>
+              Nom
+            </p>
+            <p>
+              {user.username}
+            </p>
+            <p>
               <Link to={`${ROUTES.ADMIN}/${user.uid}`}>
                 Détails
               </Link>
-            </span>
+            </p>
           </li>
         ))}
-      </ul>
-    </div>
+      </Liste>
+    </Users>
   );
 }
 

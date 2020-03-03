@@ -5,13 +5,26 @@ import { withAuthorization, AuthUserContext, withEmailVerification } from '../co
 import { compose } from 'recompose';
 import Layout from '../components/Layout'
 
+import styled from 'styled-components'
+import { pxToRem, colors } from '../theme/Helpers'
+
+const AccountWrapper = styled.article`
+  padding: ${pxToRem(16)};
+
+  h1 {
+    color: ${colors.accent};
+  }
+`
+
 const AccountPage = () => (
   <AuthUserContext.Consumer>
     {authUser => (
       <Layout page="profil">
-        <h1>Profil: {authUser.displayName}</h1>
-        <PasswordForgetForm />
-        <PasswordChangeForm />
+        <AccountWrapper>
+          <h1>{authUser.username}</h1>
+          <PasswordForgetForm />
+          <PasswordChangeForm />
+        </AccountWrapper>
       </Layout>
     )}
   </AuthUserContext.Consumer>

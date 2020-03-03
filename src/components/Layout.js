@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from 'react'
+import React, { useContext } from 'react'
 import Navigation from './Navigation'
 import GlobalStyle from '../theme/GlobalStyle'
 import { useWindowSize } from '../hooks/useResize'
@@ -6,8 +6,9 @@ import { useWindowSize } from '../hooks/useResize'
 import styled from 'styled-components'
 import { colors, pxToRem } from '../theme/Helpers'
 
-import { TiChevronRightOutline, TiChevronLeftOutline } from "react-icons/ti";
+import { TiChevronRightOutline, TiChevronLeftOutline } from "react-icons/ti"
 import { IconContext } from "react-icons"
+import { asideContext } from './persistentState/context'
 
 const Page = styled.section`
     display: flex;
@@ -56,17 +57,8 @@ const Section = styled.section`
 `
 
 const TemplateWrapper = ({ children, page }) => {
-    let size = useWindowSize();
-    const [ open, setOpen ] = useState(true)
-
-    const handleLocalStorage = () => {
-        setOpen(!open)
-        localStorage.setItem('open', JSON.stringify(!open));
-    }
-
-    useEffect(() => {
-        setOpen(JSON.parse(localStorage.getItem('open')),)
-    }, [open])
+let size = useWindowSize();
+const [open, setOpen] = useContext(asideContext)
 
   return (
     <Page>
@@ -76,9 +68,9 @@ const TemplateWrapper = ({ children, page }) => {
                 <IconContext.Provider value={{ className: "icone" }}>
                     {
                         open ?
-                        <TiChevronLeftOutline onClick={() => handleLocalStorage()} />
+                        <TiChevronLeftOutline onClick={() => setOpen(!open)} />
                         :
-                        <TiChevronRightOutline onClick={() => handleLocalStorage()} />
+                        <TiChevronRightOutline onClick={() => setOpen(!open)} />
                     }
                 </IconContext.Provider>
             </div>
@@ -90,6 +82,7 @@ const TemplateWrapper = ({ children, page }) => {
         </Aside>
         <Section>{children}</Section>
     </Page>
+    
   )
 }
 

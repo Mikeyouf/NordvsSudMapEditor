@@ -1,5 +1,5 @@
 import { css } from 'styled-components'
-import { darken, lighten } from 'polished'
+import { darken, lighten, rgba } from 'polished'
 
 export const colors = {
   primary: '#797335',
@@ -9,6 +9,7 @@ export const colors = {
   accent: '#4a65f2',
   accentLight: lighten(0.1, '#4a65f2'),
   accentDark: darken(0.2, '#4a65f2'),
+  accentRGBA: rgba('#4a65f2', 0.2),
   white: '#f1f4f5',
   black: '#20272b',
   grey: '#354147',

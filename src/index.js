@@ -11,9 +11,9 @@ import firebase, { firebaseContext } from './firebase/index'
 
 ReactDOM.render(
     <firebaseContext.Provider value={firebase}>
-        <TueriProvider>
-            <App />
-        </TueriProvider>
+            <TueriProvider>
+                <App />
+            </TueriProvider>
     </firebaseContext.Provider>
 , document.getElementById('root'))
 

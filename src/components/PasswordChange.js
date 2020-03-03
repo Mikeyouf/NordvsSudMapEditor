@@ -1,6 +1,43 @@
 import React, { useState } from 'react';
 import { withFirebase } from '../firebase/index';
 
+import styled from 'styled-components'
+import { pxToRem, fonts, colors } from '../theme/Helpers'
+
+const Form = styled.form`
+  font-family: ${fonts.fontTexte};
+  font-size: ${pxToRem(16)};
+  height: ${pxToRem(100)};
+
+  input {
+    border: none;
+    border-bottom: 2px solid ${colors.accent};
+    color: ${colors.accent};
+    width: ${pxToRem(360)};
+    height: ${pxToRem(45)};
+    margin-right: ${pxToRem(16)};
+    box-shadow: 0 3px 3px 0 ${colors.accentRGBA};
+  }
+`
+
+const Button = styled.button`
+  border: 1px solid ${colors.accent};
+  border-radius: 4px;
+  color: ${colors.accent};
+  cursor: pointer;
+  padding: ${pxToRem(8)} ${pxToRem(16)};
+  transition: all 0.3s ease-in;
+  font-size: ${pxToRem(18)};
+  box-shadow: 3px 3px 3px 1px ${colors.accentRGBA};
+
+  &:hover {
+    background: ${colors.accent};
+    color: ${colors.white};
+    transition: all 0.3s ease-in;
+    border: 1px solid ${colors.accentLight};
+  }
+`
+
 const INITIAL_STATE = {
   passwordOne: '',
   passwordTwo: '',
@@ -34,7 +71,7 @@ const PasswordChangeForm = ({ firebase }) => {
   const isInvalid = infos.passwordOne !== infos.passwordTwo || infos.passwordOne === '';
 
   return(
-    <form onSubmit={e => onSubmit(e)}>
+    <Form onSubmit={e => onSubmit(e)}>
         <input
           name="passwordOne"
           value={infos.passwordOne}
@@ -49,11 +86,11 @@ const PasswordChangeForm = ({ firebase }) => {
           type="password"
           placeholder="Confirmer le nouveau mot de passe"
         />
-        <button disabled={isInvalid} type="submit">
+        <Button disabled={isInvalid} type="submit">
           Changer mon mot de passe
-        </button>
+        </Button>
         {error && <p>{error.message}</p>}
-      </form>
+      </Form>
   )
 }
 
