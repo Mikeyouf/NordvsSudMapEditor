@@ -43,6 +43,7 @@ const Liste = styled.ul`
     font-family: ${fonts.fontTexte};
     display: flex;
     justify-content: space-between;
+    padding: ${pxToRem(8)};
 
     p {
 
@@ -51,7 +52,8 @@ const Liste = styled.ul`
       }
 
       a {
-        color: ${colors.accentDark};
+        color: ${colors.accent};
+        font-weight: bold;
       }
     }
 
