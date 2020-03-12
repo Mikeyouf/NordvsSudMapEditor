@@ -7,29 +7,36 @@ import Layout from '../components/Layout'
 import CarteReader from './../components/map/CarteReader';
 import CarteEditor from './../components/map/CarteEditor';
 
-import { pxToRem } from '../theme/Helpers'
-import styled from 'styled-components'
-
-const Article = styled.article`
-    padding: 0 ${pxToRem(16)};
-`
-
 const HomePage = () => {
   // const [ loading, setLoading ] = useState(false)
+  // const urldeDurango = 'https://nord.zd.fr/script.php?xMin=0&xMax=5&yMin=0&yMax=5'
+  // useEffect(() => {
+  //   const proxyurl = "https://cors-anywhere.herokuapp.com/";
+  //   const url = "https://nord.zd.fr/script.php?";
+  //   const params = 'xMin=' + 0 + '&xMax=' + 5 + '&yMin=' + 0 +  '&yMax=' + 7;
+  //   fetch(proxyurl + url + params, {
+  //     method: 'post',
+  //     headers: {
+  //       'Content-type': 'application/x-www-form-urlencoded'
+  //     },
+  //    })
+  //   .then(response => console.log(response.json()))
+  //   .then(contents => console.log(contents))
+  //   .catch(error => console.log(error.message))
+  // })
+
 
   return(
     <AuthUserContext.Consumer>
       {
         authUser => (
           <Layout page="carte">
-            <Article>
                 {/* {loading && <div>Loading ...</div>} */}
                 {
                     authUser.roles[ROLES.EDITOR] ? <CarteEditor/>
                     :
                     authUser.roles[ROLES.READER] && <CarteReader/>
                 }
-            </Article>
           </Layout>
         )
       }

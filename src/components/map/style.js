@@ -2,18 +2,25 @@ import styled from 'styled-components'
 import { pxToRem, fonts, colors } from '../../theme/Helpers'
 
 export const Article = styled.article`
-    padding: ${pxToRem(16)};
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
 `
 
 export const Header = styled.header`
-    width: ${pxToRem(800)};
+    grid-column: 1 / 5;
+    grid-row: 1 / 2;
+    justify-self: center;
+    min-width: ${pxToRem(640)};
     height: ${pxToRem(100)};
     padding: ${pxToRem(8)};
     border: 1px solid ${colors.accentLight};
     border-top: none;
     border-radius: 0 0 5px 5px;
     background: ${colors.accent};
-    margin: 0 auto;
     font-family: ${fonts.fontTexte};
     color: ${colors.white};
     box-shadow: 3px 3px 3px 1px ${colors.accentRGBA};
@@ -52,4 +59,45 @@ export const Button = styled.button`
         transition: all 0.3s ease-in;
         border: 1px solid ${colors.accentLight};
     }
+`
+
+export const ButtonAside = styled(Button)`
+    width: 100%;
+`
+
+export const Aside = styled.aside`
+    grid-column: 5 / 6;
+    grid-row: 1 / -1;
+    justify-self: end;
+    width: ${pxToRem(160)};
+    padding: ${pxToRem(8)};
+    border: 1px solid ${colors.accentLight};
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    background: ${colors.accent};
+    font-family: ${fonts.fontTexte};
+    color: ${colors.white};
+    box-shadow: -3px -3px 3px 1px ${colors.accentRGBA};
+    display: flex;
+    flex-direction: column;
+`
+
+export const InputWrapper = styled.div`
+    margin: ${pxToRem(8)} 0;
+
+    input {
+        margin: 0 ${pxToRem(8)};
+    }
+`
+
+export const Wrapper = styled.div`
+    margin: ${pxToRem(16)};
+    grid-column: 1 / -1;
+    grid-row: 2 / -1;
+    width: ${ ({ colonnes }) => colonnes * 64 + 'px' };
+    min-width: ${ ({ colonnes }) => colonnes * 64 + 'px' };
+    height: ${ ({ lignes }) => lignes * 64 + 'px' };
+    min-height: ${ ({ lignes }) => lignes * 64 + 'px' };
+    display: flex;
+    flex-wrap: wrap;
 `

@@ -45,7 +45,7 @@ const useForm = ( initialState, validate, next  ) => {
     return {
         handleSubmit,
         handleKeyDown,
-        values, 
+        values,
         handleChange,
         errors,
     }

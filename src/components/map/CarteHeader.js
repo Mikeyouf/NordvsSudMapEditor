@@ -8,14 +8,14 @@ const CarteHeader = ({ handleSubmit, handleChange, values }) => {
             <Form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="nbrDeDiv">Nbr de Col:</label>
-                    <Input onChange={handleChange} value={values.colonnes} type="text" name="colonnes" maxLength="3" placeholder="colonnes" required/>
+                    <Input onChange={handleChange} value={values.colonnes} type="text" name="colonnes" id="colonnes" maxLength="3" placeholder="colonnes" required/>
                 </div>
                 <div>
                     <label htmlFor="nbrDeCol">Nbr de lignes:</label>
-                    <Input onChange={handleChange} value={values.lignes} type="text" name="lignes" maxLength="3" placeholder="lignes" required />
+                    <Input onChange={handleChange} value={values.lignes} type="text" name="lignes" id="lignes" maxLength="3" placeholder="lignes" required />
                 </div>
                 <Button type="submit">Valider</Button>
-                <Button type="reset">Annuler</Button>
+                {/* <Button type="reset">Annuler</Button> */}
             </Form>
         </Header>
     )
