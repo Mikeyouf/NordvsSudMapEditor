@@ -53,7 +53,7 @@ const Cell = ({ coordonnee, setMyArray, terrain, x, y, myArray, type, index }) =
 
     return(  
         <Div
-          onClick={handleSetCurrentTerrain ? handleSetCurrentTerrain(index) : null}
+          onClick={handleSetCurrentTerrain ? () => handleSetCurrentTerrain(index) : null}
           className={`terrain ${coordonnee ? "" : type}`}
         >
             { coordonnee ? x ? x : y : null }

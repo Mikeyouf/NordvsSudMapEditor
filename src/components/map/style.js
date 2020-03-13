@@ -14,7 +14,7 @@ export const Header = styled.header`
     grid-column: 1 / 5;
     grid-row: 1 / 2;
     justify-self: center;
-    min-width: ${pxToRem(640)};
+    min-width: ${pxToRem(720)};
     height: ${pxToRem(100)};
     padding: ${pxToRem(8)};
     border: 1px solid ${colors.accentLight};
@@ -70,6 +70,7 @@ export const Aside = styled.aside`
     grid-row: 1 / -1;
     justify-self: end;
     width: ${pxToRem(160)};
+    max-height: 100vh;
     padding: ${pxToRem(8)};
     border: 1px solid ${colors.accentLight};
     border-right: none;
@@ -91,7 +92,7 @@ export const InputWrapper = styled.div`
 `
 
 export const Wrapper = styled.div`
-    margin: ${pxToRem(16)};
+    margin: 0 ${pxToRem(16)};
     grid-column: 1 / -1;
     grid-row: 2 / -1;
     width: ${ ({ colonnes }) => colonnes * 64 + 'px' };

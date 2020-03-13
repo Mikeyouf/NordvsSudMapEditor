@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Header, Input, Button, Form } from './style'
 
-const CarteHeader = ({ handleSubmit, handleChange, values }) => {
+const CarteHeader = ({ handleSubmit, handleChange, values, handleReset }) => {
     return(
         <Header id="inputElts" className="container">
             <Form onSubmit={handleSubmit}>
@@ -15,7 +15,7 @@ const CarteHeader = ({ handleSubmit, handleChange, values }) => {
                     <Input onChange={handleChange} value={values.lignes} type="text" name="lignes" id="lignes" maxLength="3" placeholder="lignes" required />
                 </div>
                 <Button type="submit">Valider</Button>
-                {/* <Button type="reset">Annuler</Button> */}
+                <Button type="reset" onClick={() => handleReset()}>Reset</Button>
             </Form>
         </Header>
     )

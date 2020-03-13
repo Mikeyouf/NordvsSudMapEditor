@@ -6,7 +6,6 @@ import validate from '../../utils/validate'
 
 import CarteHeader from './CarteHeader';
 import CarteTerrains from './CarteTerrains';
-// import Carte from './Carte';
 import Cell from './Cell';
 
 import { Article, Wrapper } from './style'
@@ -14,27 +13,32 @@ import { Article, Wrapper } from './style'
 const INITIAL_VALUES = {
     colonnes : '',
     lignes : '',
-    // terrain: 0,
 }
 
 const CarteEditor = ({ firebase }) => {
     const [ currentLignes, setCurrentLignes ] = useState(0)
     const [ currentColonnes, setCurrentColonnes ] = useState(0)
     const [ valuesTerrain, setValuesTerrain ] = useState('plaine')
-    const [myArray, setMyArray] = useState([])
+    const [ myArray, setMyArray ] = useState([])
+
     // recupère le nombre de colonnes et de lignes
     const handleCreateValues = () => {
-        const { colonnes, lignes } = values
-        setCurrentLignes(lignes)
-        setCurrentColonnes(colonnes)
-        createMap(lignes, colonnes)
+        let { colonnes, lignes } = values
+        const newLignes = Number(lignes) + 1
+        const newColonnes = Number(colonnes) + 1
+        if (myArray.length > 0) {
+            return
+        }
+        setCurrentLignes(newLignes)
+        setCurrentColonnes(newColonnes)
+        createMap(newLignes, newColonnes)
     }
     const { handleSubmit, handleChange, values } = useForm(INITIAL_VALUES, validate, handleCreateValues)
 
     useEffect(() => {
-        if (!JSON.parse(window.localStorage.getItem("myArray"))) return;
-        if (!JSON.parse(window.localStorage.getItem("ligne"))) return;
-        if (!JSON.parse(window.localStorage.getItem("colonne"))) return;
+        if (localStorage.getItem("myArray") === null) return;
+        if (localStorage.getItem("ligne") === null) return;
+        if (localStorage.getItem("colonne") === null) return;
 
         const newLigne = JSON.parse(window.localStorage.getItem("ligne"));
         setCurrentLignes(newLigne)
@@ -42,13 +46,16 @@ const CarteEditor = ({ firebase }) => {
         setCurrentColonnes(newColonne)
         const newArray = JSON.parse(window.localStorage.getItem("myArray"));
         setMyArray(newArray)
+            
     }, [])
 
     useEffect(() => {
-        window.localStorage.setItem("myArray", JSON.stringify(myArray))
-        window.localStorage.setItem("ligne", JSON.stringify(currentLignes))
-        window.localStorage.setItem("colonne", JSON.stringify(currentColonnes))
-    }, [myArray, valuesTerrain, currentLignes, currentColonnes])
+        if(myArray.length > 0) {
+            window.localStorage.setItem("myArray", JSON.stringify(myArray))
+            window.localStorage.setItem("ligne", JSON.stringify(currentLignes))
+            window.localStorage.setItem("colonne", JSON.stringify(currentColonnes))
+        }
+    }, [myArray, currentLignes, currentColonnes])
 
     const handleChangeTerrain = async event => {
         event.persist();
@@ -73,13 +80,23 @@ const CarteEditor = ({ firebase }) => {
         }
     }
 
+    const handleReset = () => {
+        localStorage.removeItem("myArray");
+        localStorage.removeItem("ligne");
+        localStorage.removeItem("colonne");
+        setMyArray([])
+        setCurrentLignes(0)
+        setCurrentColonnes(0)
+
+    }
+
     return(
         <Article>
-            <CarteHeader handleSubmit={handleSubmit} handleChange={handleChange} values={values}/>
+            <CarteHeader handleSubmit={handleSubmit} handleChange={handleChange} handleReset={handleReset} values={values}/>
             <CarteTerrains handleChange={handleChangeTerrain}/>
             <Wrapper colonnes={currentColonnes} lignes={currentLignes}>
                 {
-                    myArray.map((elt, i) => 
+                    myArray.length > 0 ? myArray.map((elt, i) => 
                         elt.name === 'x' ?
                         <Cell key={i} coordonnee={true} x={elt.id} terrain={valuesTerrain} />
                         :
@@ -88,6 +105,8 @@ const CarteEditor = ({ firebase }) => {
                         :
                         <Cell key={i} coordonnee={false} terrain={valuesTerrain} index={i} type={elt.type} setMyArray={setMyArray} myArray={myArray}/>
                     )
+                    :
+                    null
                 }
             </Wrapper>
         </Article>
